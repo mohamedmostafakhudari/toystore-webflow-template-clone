@@ -20,11 +20,12 @@ export default function Layout(content) {
           <div id="cart-footer-container" class="mt-6"></div>
     </dialog>
     <div id="navbar-container"></div>
-    <div id="page-content">
-      ${content}
+    <div id="page-content-container">
+      
     </div>
   `;
-
+	const pageContentContainer = document.getElementById("page-content-container");
+	content.render(pageContentContainer);
 	// render navbar
 	const navbarContainer = document.getElementById("navbar-container");
 	if (navbarContainer) {

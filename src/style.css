@@ -12,5 +12,5 @@ h4,
 h5,
 h6,
 #logo {
-	@apply font-varela;
+	@apply font-varela text-slate-800;
 }

@@ -42,7 +42,7 @@ export const router = {
 
 		if (route) {
 			const view = new route.view();
-			Layout(view.render());
+			Layout(view);
 		} else {
 			throw new Error("Routing Error");
 		}

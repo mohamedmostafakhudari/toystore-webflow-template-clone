@@ -39,6 +39,10 @@ module.exports = {
 				include: path.resolve(__dirname, "src"),
 				type: "asset/resource",
 			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: "asset/inline",
+			},
 		],
 	},
 };

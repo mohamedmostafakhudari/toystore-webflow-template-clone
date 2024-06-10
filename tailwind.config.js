@@ -15,7 +15,7 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				primary: "#A5C92D",
+				primary: "rgb(165, 201, 38)",
 			},
 			fontFamily: {
 				varela: ["Varela Round", "sans-serif"],
@@ -34,6 +34,7 @@ module.exports = {
 			animation: {
 				menuSlideUp: "menuSlideUp 200ms ease-in-out forwards",
 				menuSlideDown: "menuSlideDown 300ms ease-in-out forwards",
+				fadyScaleUp: "scaleUp 400ms 1s ease-in-out forwards, fadeIn 400ms 1s ease-in-out forwards",
 				zoomIn: "zoomIn 300ms ease-in-out forwards",
 				zoomOut: "zoomOut 200ms ease-in-out forwards",
 			},
@@ -52,6 +53,22 @@ module.exports = {
 					},
 					"100%": {
 						transform: "translateY(0%)",
+					},
+				},
+				scaleUp: {
+					"0%": {
+						transform: "scale3d(0.5,0.5,0.5)",
+					},
+					"100%": {
+						transform: "scale3d(1,1,1)",
+					},
+				},
+				fadeIn: {
+					"0%": {
+						opacity: 0,
+					},
+					"100%": {
+						opacity: 1,
 					},
 				},
 				zoomIn: {
