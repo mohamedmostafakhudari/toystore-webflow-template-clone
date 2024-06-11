@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply overflow-hidden text-slate-600 font-openSans text-base;
+	@apply overflow-x-hidden text-slate-600 font-openSans text-base;
 }
 h1,
 h2,

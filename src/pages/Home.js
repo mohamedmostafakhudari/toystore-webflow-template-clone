@@ -1,9 +1,9 @@
 import heroSection from "../sections/hero";
+import shopWindowsSection from "../sections/shopWindowsSection";
 
 export default class Home {
 	render(container) {
-		console.log(container);
 		heroSection.render(container);
-		// return `<section >Welcome to the Home Page!</section>`;
+		shopWindowsSection.render(container);
 	}
 }

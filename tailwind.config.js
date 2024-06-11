@@ -2,7 +2,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-	content: ["./src/**/*.{html,js}"],
+	content: ["./src/**/*.{html,hbs,js}"],
 	theme: {
 		container: {
 			padding: "1rem",
@@ -16,6 +16,8 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: "rgb(165, 201, 38)",
+				yellow: "#FEC135",
+				pink: "#F14E6B",
 			},
 			fontFamily: {
 				varela: ["Varela Round", "sans-serif"],
@@ -34,7 +36,7 @@ module.exports = {
 			animation: {
 				menuSlideUp: "menuSlideUp 200ms ease-in-out forwards",
 				menuSlideDown: "menuSlideDown 300ms ease-in-out forwards",
-				fadyScaleUp: "scaleUp 400ms 1s ease-in-out forwards, fadeIn 400ms 1s ease-in-out forwards",
+				fadyScaleUp: "scaleUp 400ms ease-in-out forwards, fadeIn 400ms ease-in-out forwards",
 				zoomIn: "zoomIn 300ms ease-in-out forwards",
 				zoomOut: "zoomOut 200ms ease-in-out forwards",
 			},

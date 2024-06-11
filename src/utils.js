@@ -7,7 +7,7 @@ export function createElement(tag = "div", className = "", attributes = {}, text
 	const elem = document.createElement(tag);
 	elem.textContent = textContent;
 	elem.className = className;
-	for (key in attributes) {
+	for (const key in attributes) {
 		elem.setAttribute(key, attributes[key]);
 	}
 	return elem;
