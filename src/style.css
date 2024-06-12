@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply overflow-x-hidden text-slate-600 font-openSans text-base;
+	@apply overflow-x-hidden text-slate-600 font-openSans text-base bg-slate-50 min-h-[1000vh];
 }
 h1,
 h2,
@@ -13,4 +13,10 @@ h5,
 h6,
 #logo {
 	@apply font-varela text-slate-800;
+}
+
+@layer utilities {
+	.elevate {
+		@apply transition-all duration-[400ms] scale-[101%] shadow-lg shadow-black/10;
+	}
 }

@@ -15,9 +15,27 @@ export function createElement(tag = "div", className = "", attributes = {}, text
 export function createButton(className, attributes, textContent) {
 	return createElement("button", `rounded-full p-3 px-8 font-bold duration-200 ${className}`, attributes, textContent);
 }
-
+export function createResponsiveImage(src, srcset, sizes, alt, className) {
+	const image = createElement("img", className, {
+		src,
+		srcset,
+		sizes,
+		alt,
+	});
+	return image;
+}
 export function appendChildren(parent, ...children) {
 	children.forEach((child) => {
 		parent.appendChild(child);
 	});
+}
+
+export async function fetchData(url) {
+	try {
+		const response = await fetch(url);
+		const data = await response.json();
+		return data;
+	} catch (err) {
+		console.log(err);
+	}
 }

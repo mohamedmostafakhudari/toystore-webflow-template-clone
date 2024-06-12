@@ -8,7 +8,7 @@ import plushToyImage from "../assets/5bae12942ca03553bf0d536c_33903-2-plush-toy-
 import { createButton, createElement } from "../utils";
 class ShopWindowsSection {
 	async render(container) {
-		const section = createElement("section", "py-24", {
+		const section = createElement("section", "py-32", {
 			id: "shopWindows",
 		});
 		const compiledTemp = Handlebars.compile(rawTemp);
@@ -22,7 +22,6 @@ class ShopWindowsSection {
 		});
 		container.appendChild(section);
 	}
-	build() {}
 }
 
 const shopWindowsSection = new ShopWindowsSection();

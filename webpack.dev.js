@@ -8,8 +8,7 @@ module.exports = merge(common, {
 	devtool: "inline-source-map",
 	devServer: {
 		static: {
-			directory: path.resolve(__dirname, "/assets"),
-			publicPath: "/assets",
+			directory: path.join(__dirname, "/public"),
 		},
 		historyApiFallback: true,
 	},
