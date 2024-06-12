@@ -25,7 +25,7 @@ class ToysSection {
 			console.log(err);
 		}
 	}
-	buildCardsWrapper(title) {
+	buildCardsSectionWrapper(title) {
 		const wrapper = createElement("div", "container text-slate-800");
 		const heading = createElement("div", "");
 		const subSectionTitle = createElement("h3", "relative capitalize text-2xl pb-7 lg:pb-8 border-b-2 font-medium border-slate-300 lg:text-3xl", {}, title);
@@ -51,9 +51,9 @@ class ToysSection {
 		return wrapper;
 	}
 	buildCards(toys, title) {
-		const wrapper = this.buildCardsWrapper(title);
+		const wrapper = this.buildCardsSectionWrapper(title);
 
-		const cardsWrapper = createElement("div", "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4 md:gap-10 mt-12 mb-32 md:mt-16");
+		const cardsWrapper = createElement("div", "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4 md:gap-10 mt-12 mb-32 md:mt-16 md:px-4");
 		for (const toy of toys.slice(0, 4)) {
 			const { name, price, images } = toy;
 			const card = this.buildCard({ name, price, images });

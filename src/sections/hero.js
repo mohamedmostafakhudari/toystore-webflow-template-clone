@@ -19,7 +19,14 @@ class HeroSection {
 		const p = createElement("p", "text-primary text-sm font-medium", {}, "Say Hello to Toystore!");
 		const h1 = createElement("h1", "text-3.5xl lg:text-5xl leading-10 font-medium", {}, "Free Ecommerce Template for Webflow");
 
-		const button = createButton("bg-primary text-white hover:shadow-primary/50 hover:shadow-[0px_2px_4px_1px]", {}, "Open Catalog");
+		const button = createButton(
+			"bg-primary w-fit mx-auto text-white hover:shadow-primary/50 hover:shadow-[0px_2px_4px_1px]",
+			{
+				href: "#",
+			},
+			"Open Catalog",
+			"link"
+		);
 
 		appendChildren(box, p, h1, button);
 

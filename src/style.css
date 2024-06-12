@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply overflow-x-hidden text-slate-600 font-openSans text-base bg-slate-50 min-h-[1000vh];
+	@apply overflow-x-hidden text-slate-600 font-openSans text-base bg-slate-50;
 }
 h1,
 h2,

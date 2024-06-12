@@ -1,3 +1,4 @@
+import aboutSection from "../sections/about";
 import heroSection from "../sections/hero";
 import shopWindowsSection from "../sections/shopWindows";
 import toysSection from "../sections/toys";
@@ -9,5 +10,6 @@ export default class Home {
 		shopWindowsSection.render(container);
 		toysSection.render(container);
 		videoSection.render(container);
+		aboutSection.render(container);
 	}
 }
