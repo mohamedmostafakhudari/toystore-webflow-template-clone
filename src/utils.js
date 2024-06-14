@@ -46,3 +46,10 @@ export async function fetchData(url) {
 		console.log(err);
 	}
 }
+export function disableLink(linkElem) {
+	linkElem.onclick = function (e) {
+		console.log("abc");
+		e.preventDefault();
+		e.stopPropagation();
+	};
+}

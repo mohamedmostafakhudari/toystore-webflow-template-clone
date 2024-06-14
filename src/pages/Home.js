@@ -16,7 +16,6 @@ export default class Home {
 			(entries, observer) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						console.log(entry.target);
 						entry.target.classList.add("animate-fadyScaleUp");
 					}
 				});

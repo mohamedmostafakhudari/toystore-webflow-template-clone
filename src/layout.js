@@ -54,7 +54,6 @@ export default function Layout(content) {
 		(entries, observer) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
-					console.log(entry.target);
 					entry.target.classList.add("animate-fadyScaleUp");
 				}
 			});
