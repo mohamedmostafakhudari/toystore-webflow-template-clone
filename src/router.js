@@ -29,7 +29,7 @@ export const router = {
 
 	navigate() {
 		const currentPath = window.location.pathname;
-		this.loadRoute("/");
+		this.loadRoute(currentPath);
 	},
 
 	navigateTo(path) {
@@ -38,7 +38,10 @@ export const router = {
 	},
 
 	loadRoute(path) {
-		const route = this.routes.find((route) => route.path === path);
+		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
+		const processedPath = isProduction ? path.split("/")[2] : path.split("/")[1];
+
+		const route = this.routes.find((route) => route.path === "/" + processedPath);
 
 		if (route) {
 			const view = new route.view();
