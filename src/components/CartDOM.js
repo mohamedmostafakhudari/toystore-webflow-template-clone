@@ -1,5 +1,3 @@
-import { loadImage } from "../utils";
-
 class CartDOM {
 	constructor() {}
 	async renderCart(cart, bodyContainer = document.querySelector("#cart-body-container"), footerContainer = document.querySelector("#cart-footer-container")) {
@@ -82,7 +80,7 @@ class CartDOM {
     <input type="number" name="quantity" id="quantity" value=${quantity} defaultValue="1" class="w-20 h-12 rounded-full text-center pl-3 ring-1 ring-slate-300 bg-slate-100"/>
     `;
 		const imageContainer = li.querySelector(".image-container");
-		const image = product.imgSrc ? await loadImage(product.imgSrc) : null;
+		const image = product.imgSrc ? "./assets/" + product.imgSrc : null;
 		if (image) {
 			const imageElement = document.createElement("img");
 			imageElement.src = image;

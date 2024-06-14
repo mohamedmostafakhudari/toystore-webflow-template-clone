@@ -1,7 +1,7 @@
-export async function loadImage(imgSrc) {
-	const module = await import("./assets/" + imgSrc);
-	return module.default;
-}
+// export async function loadImage(imgSrc) {
+// 	const module = await import("./assets/" + imgSrc);
+// 	return module.default;
+// }
 
 export function createElement(tag = "div", className = "", attributes = {}, textContent = "", innerHTML = "") {
 	const elem = document.createElement(tag);

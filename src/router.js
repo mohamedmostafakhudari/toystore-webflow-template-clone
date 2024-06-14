@@ -29,7 +29,7 @@ export const router = {
 
 	navigate() {
 		const currentPath = window.location.pathname;
-		this.loadRoute(currentPath);
+		this.loadRoute("/");
 	},
 
 	navigateTo(path) {
