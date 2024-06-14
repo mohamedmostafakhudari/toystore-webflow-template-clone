@@ -5,7 +5,10 @@ module.exports = {
 	content: ["./src/**/*.{html,hbs,js}"],
 	theme: {
 		container: {
-			padding: "1rem",
+			padding: {
+				DEFAULT: "1rem",
+				lg: "2rem",
+			},
 			center: true,
 			screens: {
 				...defaultTheme.screens,

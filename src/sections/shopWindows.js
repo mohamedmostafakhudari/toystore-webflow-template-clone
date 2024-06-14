@@ -18,7 +18,7 @@ class ShopWindowsSection {
 		const buttonPlaceholders = section.querySelectorAll(".button-placeholder");
 		buttonPlaceholders.forEach((placeholder, i) => {
 			const buttonElem = createButton(
-				"bg-white w-fit mx-auto text-slate-800 capitalize whitespace-nowrap hover:shadow-black/20 hover:shadow-[0px_3px_4px_2px]",
+				`${[...placeholder.classList].slice(1).join(" ")} bg-white w-fit text-slate-800 capitalize whitespace-nowrap hover:shadow-black/20 hover:shadow-[0px_3px_4px_2px]`,
 				{
 					href: "#",
 				},

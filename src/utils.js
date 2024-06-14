@@ -3,20 +3,23 @@ export async function loadImage(imgSrc) {
 	return module.default;
 }
 
-export function createElement(tag = "div", className = "", attributes = {}, textContent = "") {
+export function createElement(tag = "div", className = "", attributes = {}, textContent = "", innerHTML = "") {
 	const elem = document.createElement(tag);
 	elem.textContent = textContent;
 	elem.className = className;
 	for (const key in attributes) {
 		elem.setAttribute(key, attributes[key]);
 	}
+	if (innerHTML) {
+		elem.innerHTML = innerHTML;
+	}
 	return elem;
 }
 export function createButton(className, attributes, textContent, variation = "button") {
 	if (variation == "button") {
-		return createElement("button", `rounded-full p-3 px-8 font-bold duration-200 ${className}`, attributes, textContent);
+		return createElement("button", `rounded-full p-3.5 px-8 font-bold duration-200 ${className}`, attributes, textContent);
 	} else if (variation == "link") {
-		return createElement("a", `block rounded-full p-3 px-8 font-bold duration-200 ${className}`, attributes, textContent);
+		return createElement("a", `block rounded-full p-3.5 px-8 font-bold duration-200 ${className}`, attributes, textContent);
 	}
 }
 export function createResponsiveImage(src, srcset, sizes, alt, className) {

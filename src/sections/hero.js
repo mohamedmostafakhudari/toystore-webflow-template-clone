@@ -9,10 +9,12 @@ class HeroSection {
 		container.appendChild(heroSection);
 	}
 	build() {
-		const section = createElement("section", `min-h-[60vh] h-[60vh] md:min-h-[71.5vh] md:h-[71.5vh] lg:min-h-[80vh] lg:h-[80vh] bg-cover bg-center bg-no-repeat`);
+		const section = createElement("section", `min-h-[60vh] h-[60vh] md:min-h-[71.5vh] md:h-[71.5vh] lg:min-h-[80vh] lg:h-[80vh] bg-cover bg-center bg-no-repeat`, {
+			id: "hero",
+		});
 		section.style.backgroundImage = `url(${backgroundUrl})`;
 		const container = createElement("div", "container h-full grid place-items-center");
-		const box = createElement("div", "rounded-[14px] p-12 py-10 lg:py-14 bg-white text-center space-y-4 max-w-[480px] scale-[50%] opacity-0 lg:max-w-[570px] animate-fadyScaleUp", {
+		const box = createElement("div", "hero__box rounded-[14px] p-12 py-10 lg:py-14 bg-white text-center space-y-4 max-w-[480px] scale-[50%] opacity-0 lg:max-w-[570px]", {
 			style: "animation-delay:1s;",
 		});
 
@@ -20,7 +22,7 @@ class HeroSection {
 		const h1 = createElement("h1", "text-3.5xl lg:text-5xl leading-10 font-medium", {}, "Free Ecommerce Template for Webflow");
 
 		const button = createButton(
-			"bg-primary w-fit mx-auto text-white hover:shadow-primary/50 hover:shadow-[0px_2px_4px_1px]",
+			"bg-primary w-fit mx-auto text-white hover:shadow-primary/50 hover:shadow-[0px_2px_4px_1px] hover:scale-[102%]",
 			{
 				href: "#",
 			},

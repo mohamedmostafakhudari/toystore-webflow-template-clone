@@ -15,7 +15,7 @@ class AboutSection {
 		const buttonPlaceholders = section.querySelectorAll(".button-placeholder");
 		buttonPlaceholders.forEach((placeholder, i) => {
 			const buttonElem = createButton(
-				"bg-primary text-white w-fit mx-auto lg:mx-0 uppercase mt-8",
+				"bg-primary text-white w-fit mx-auto lg:mx-0 uppercase mt-8 hover:shadow-primary/50 hover:shadow-[0px_2px_4px_1px] hover:scale-[102%]",
 				{
 					href: "#",
 				},

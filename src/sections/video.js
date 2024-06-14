@@ -9,7 +9,7 @@ class VideoSection {
 	render(container) {
 		const section = createElement(
 			"section",
-			"min-h-[55vh] h-[55vh] md:min-h-[46vh] md:h-[46vh] bg-[size:400%] bg-[position:50%,0] bg-fixed md:bg-[size:200%] lg:bg-[size:130%] bg-black/30 bg-blend-overlay bg-no-repeat text-white",
+			"min-h-[55vh] h-[55vh] bg-[size:400%] bg-[position:50%,0] bg-fixed md:bg-[size:200%] lg:bg-[size:130%] bg-black/30 bg-blend-overlay bg-no-repeat text-white",
 			{
 				id: "video",
 				style: `background-image: url('${backgroundImage}')`,

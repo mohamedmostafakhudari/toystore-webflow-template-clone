@@ -1,6 +1,9 @@
 import cart from "./components/Cart";
 import cartDOM from "./components/CartDOM";
 import navbar from "./components/Navbar";
+import newsLetter from "./components/Newsletter";
+import instagramSection from "./sections/instagram";
+import footerSection from "./sections/footer";
 
 export default function Layout(content) {
 	const app = document.getElementById("app");
@@ -23,6 +26,7 @@ export default function Layout(content) {
     <div id="page-content-container">
       
     </div>
+		<div id="footer-container"></div>
   `;
 	const pageContentContainer = document.getElementById("page-content-container");
 	content.render(pageContentContainer);
@@ -38,4 +42,34 @@ export default function Layout(content) {
 		cartDOM.renderCart(cart, cartBodyContainer, cartFooterContainer);
 		cartDOM.bindEventListeners(cart);
 	}
+	const footerContainer = document.getElementById("footer-container");
+	if (footerContainer) {
+		newsLetter.render(footerContainer);
+		instagramSection.render(footerContainer);
+		footerSection.render(footerContainer);
+	}
+
+	// observer
+	const observer = new IntersectionObserver(
+		(entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					console.log(entry.target);
+					entry.target.classList.add("animate-fadyScaleUp");
+				}
+			});
+		},
+		{
+			rootMargin: "0px",
+			threshold: 0.3,
+		}
+	);
+
+	setTimeout(() => {
+		const targets = [app.querySelector("#newsletter"), app.querySelector("#instagram .images-container")];
+
+		for (const target of targets) {
+			observer.observe(target);
+		}
+	}, 400);
 }

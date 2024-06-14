@@ -53,22 +53,25 @@ class ToysSection {
 	buildCards(toys, title) {
 		const wrapper = this.buildCardsSectionWrapper(title);
 
-		const cardsWrapper = createElement("div", "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4 md:gap-10 mt-12 mb-32 md:mt-16 md:px-4");
+		const cardsWrapper = createElement("div", "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4 md:gap-10 lg:gap-6 mt-12 mb-32 md:mt-16");
 		for (const toy of toys.slice(0, 4)) {
 			const { name, price, images } = toy;
 			const card = this.buildCard({ name, price, images });
 			cardsWrapper.appendChild(card);
 		}
-		console.log(toys);
 		wrapper.appendChild(cardsWrapper);
 		return wrapper;
 	}
 	buildCard({ name, price, images }) {
-		const boxLink = createElement("a", "flex flex-col gap-10 lg:gap-14 items-center bg-white rounded-xl py-8 pt-12 shadow shadow-black/10 transition-all duration-[400ms] hover:elevate", {
-			href: "#",
-		});
+		const boxLink = createElement(
+			"a",
+			"card flex flex-col gap-10 lg:gap-6 items-center bg-white rounded-xl py-8 pt-12 shadow shadow-black/10 transition-all duration-[400ms] scale-[50%] opacity-0 hover:elevate",
+			{
+				href: "#",
+			}
+		);
 
-		const imageWrapper = createElement("div", "w-60 lg:w-32");
+		const imageWrapper = createElement("div", "w-60 lg:w-48");
 		const image = createResponsiveImage(`assets/${images[0]}`, `assets/${images[1] ?? images[0]} 500w, assets/${images[0]} 1200w`, "100vw", name);
 		imageWrapper.appendChild(image);
 

@@ -44,7 +44,7 @@ class Navbar {
 	}
 	buildNavbar() {
 		const nav = document.createElement("nav");
-		nav.className = "relative shadow text-base text-slate-800";
+		nav.className = "relative lg:fixed lg:z-10 lg:w-full shadow text-base text-slate-800 bg-white";
 		const activeClasses = "text-blue-500 underline";
 		nav.innerHTML = `
 		<div class="bg-primary text-white relative z-10 text-xs py-1">
@@ -55,7 +55,7 @@ class Navbar {
 				<div class="socials-container flex items-center justify-start"></div>
 			</div>
 		</div>
-		<div class="container pr-0 bg-white relative z-10">
+		<div class="container pr-0 bg-white relative z-10 lg:px-10">
 			<div class="flex justify-start gap-16">
 				<div id="logo" class="text-lg text-slate-800 lg:text-xl">
 					<a href="/" class="block py-5">ToyStore</a>
@@ -66,7 +66,7 @@ class Navbar {
 					.map(
 						(item) => `
 					<li class="${item.selected ? activeClasses : ""}" data-id="${item.id}">
-						<a href="${item.goto}" class="py-2 capitalize">${item.label}</a>
+						<a href="${item.goto}" class="py-2 capitalize hover:underline">${item.label}</a>
 					</li>
 				`
 					)

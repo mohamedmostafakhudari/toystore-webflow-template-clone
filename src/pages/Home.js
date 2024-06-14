@@ -11,5 +11,32 @@ export default class Home {
 		toysSection.render(container);
 		videoSection.render(container);
 		aboutSection.render(container);
+
+		const observer = new IntersectionObserver(
+			(entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						console.log(entry.target);
+						entry.target.classList.add("animate-fadyScaleUp");
+					}
+				});
+			},
+			{
+				rootMargin: "0px",
+				threshold: 0.3,
+			}
+		);
+		setTimeout(() => {
+			const targets = [
+				container.querySelector("#hero .hero__box"),
+				...container.querySelectorAll("#shopWindows .shopwindows__box"),
+				...container.querySelectorAll("#toys .card"),
+				container.querySelector("#video .video__text"),
+				container.querySelector("#about .about__image"),
+			];
+			for (const target of targets) {
+				observer.observe(target);
+			}
+		}, 400);
 	}
 }
