@@ -1,71 +1,61 @@
-import { appendChildren, createElement, createResponsiveImage, fetchData } from "../utils";
+import { appendChildren, createElement, createResponsiveImage, fetchData, toVariableName } from "../utils";
+import rawTemp from "!raw-loader!../templates/toysSection.hbs";
+import Handlebars from "handlebars";
 
 class ToysSection {
-	constructor() {}
-	async render(container) {
+	constructor(heading = "") {
+		this.heading = heading;
+	}
+	async render(container, limit = "") {
 		const section = createElement("section", "", {
-			id: "toys",
+			id: this.heading ? toVariableName(this.heading) : "toys",
+			["data-visited"]: false,
 		});
-		const loadingIndicator = createElement("p", "text-center", {}, "Loading...");
+		const compiledTemp = Handlebars.compile(rawTemp);
+		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
+		const isHomePage = isProduction ? window.location.pathname.split("/")[2] === "" : window.location.pathname.split("/")[1] === "";
+		const temp = compiledTemp({ heading: this.heading, home: isHomePage });
 
-		section.appendChild(loadingIndicator);
+		section.innerHTML = temp;
+
+		const loadingIndicator = createElement("p", "col-start-1 col-end-[-1] text-center", {}, "Loading...");
+
+		const cardsContainer = section.querySelector(".cards__container");
+
+		cardsContainer.appendChild(loadingIndicator);
 
 		container.appendChild(section);
 		try {
 			const toys = await fetchData("assets/data.json");
 			if (toys) {
-				const stuffedAnimalsSubSection = this.buildCards(toys.stuffedAnimals, "Stuffed Animals");
-				const woodenToysSubSection = this.buildCards(toys.woodenToys, "Wooden Toys");
-
-				section.removeChild(loadingIndicator);
-				section.appendChild(stuffedAnimalsSubSection);
-				section.appendChild(woodenToysSubSection);
+				cardsContainer.removeChild(loadingIndicator);
+				if (this.heading) {
+					const cards = this.buildCards(toys[toVariableName(this.heading)], limit);
+					cardsContainer.appendChild(cards);
+				} else {
+					const cardSets = [this.buildCards(toys.stuffedAnimals, limit), this.buildCards(toys.woodenToys, limit)];
+					for (const set of cardSets) {
+						cardsContainer.appendChild(set);
+					}
+				}
 			}
 		} catch (err) {
 			console.log(err);
 		}
 	}
-	buildCardsSectionWrapper(title) {
-		const wrapper = createElement("div", "container text-slate-800");
-		const heading = createElement("div", "");
-		const subSectionTitle = createElement("h3", "relative capitalize text-2xl pb-7 lg:pb-8 border-b-2 font-medium border-slate-300 lg:text-3xl", {}, title);
-
-		const border = createElement("div", "bg-primary h-0.5 absolute top-full -translate-y-1/4 w-36");
-		const link = createElement(
-			"a",
-			"flex items-center gap-2 capitalize text-sm font-semibold border-b-2 border-slate-300 leading-6 absolute top-0 right-0",
-			{
-				href: "#",
-			},
-			"see all toys"
-		);
-		const icon = createElement("img", "w-3 block", {
-			src: "assets/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg",
-		});
-
-		link.appendChild(icon);
-
-		appendChildren(subSectionTitle, border, link);
-		appendChildren(heading, subSectionTitle);
-		wrapper.appendChild(heading);
-		return wrapper;
-	}
-	buildCards(toys, title) {
-		const wrapper = this.buildCardsSectionWrapper(title);
-
-		const cardsWrapper = createElement("div", "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4 md:gap-10 lg:gap-6 mt-12 mb-32 md:mt-16");
-		for (const toy of toys.slice(0, 4)) {
+	buildCards(toys, limit) {
+		const fragment = document.createDocumentFragment();
+		for (const toy of toys.slice(0, limit ? limit : -1)) {
 			const { name, price, images } = toy;
 			const card = this.buildCard({ name, price, images });
-			cardsWrapper.appendChild(card);
+			fragment.appendChild(card);
 		}
-		wrapper.appendChild(cardsWrapper);
-		return wrapper;
+		return fragment;
 	}
 	buildCard({ name, price, images }) {
 		const boxLink = createElement(
 			"a",
-			"card flex flex-col gap-10 lg:gap-6 items-center bg-white rounded-xl py-8 pt-12 shadow shadow-black/10 transition-all duration-[400ms] scale-[50%] opacity-0 hover:elevate",
+			"card flex flex-col gap-10 lg:gap-6 items-center bg-white rounded-xl py-8 pt-12 shadow shadow-black/10 transition-all duration-[400ms] invisible hover:elevate",
 			{
 				href: "#",
 			}
@@ -81,11 +71,9 @@ class ToysSection {
 		appendChildren(infoWrapper, productName, productPrice);
 
 		appendChildren(boxLink, imageWrapper, infoWrapper);
-
+		console.log(boxLink);
 		return boxLink;
 	}
 }
 
-const toysSection = new ToysSection();
-
-export default toysSection;
+export default ToysSection;

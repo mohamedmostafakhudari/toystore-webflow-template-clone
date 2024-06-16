@@ -1,14 +1,19 @@
 import aboutSection from "../sections/about";
 import heroSection from "../sections/hero";
 import shopWindowsSection from "../sections/shopWindows";
-import toysSection from "../sections/toys";
+import ToysSection from "../sections/toys";
 import videoSection from "../sections/video";
 
 export default class Home {
-	render(container) {
+	async render(container) {
 		heroSection.render(container);
 		shopWindowsSection.render(container);
-		toysSection.render(container);
+
+		const stuffedAnimalsSection = new ToysSection("Stuffed Animals");
+		const woodenToysSection = new ToysSection("Wooden Toys");
+		await stuffedAnimalsSection.render(container, 4);
+		await woodenToysSection.render(container, 4);
+		// toysSection.render(container);
 		videoSection.render(container);
 		aboutSection.render(container);
 
@@ -17,6 +22,11 @@ export default class Home {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add("animate-fadyScaleUp");
+						console.log(entry.target);
+						if (entry.target.tagName === "SECTION") {
+							entry.target.removeAttribute("data-visited", false);
+							entry.target.setAttribute("data-visited", true);
+						}
 					}
 				});
 			},
@@ -25,17 +35,15 @@ export default class Home {
 				threshold: 0.3,
 			}
 		);
-		setTimeout(() => {
-			const targets = [
-				container.querySelector("#hero .hero__box"),
-				...container.querySelectorAll("#shopWindows .shopwindows__box"),
-				...container.querySelectorAll("#toys .card"),
-				container.querySelector("#video .video__text"),
-				container.querySelector("#about .about__image"),
-			];
-			for (const target of targets) {
-				observer.observe(target);
-			}
-		}, 400);
+		const targets = [
+			container.querySelector("#hero .hero__box"),
+			...container.querySelectorAll("#shopWindows .shopwindows__box"),
+			...container.querySelectorAll("#stuffedAnimals .card, #woodenToys .card"),
+			container.querySelector("#video .video__text"),
+			container.querySelector("#about .about__image"),
+		];
+		for (const target of targets) {
+			observer.observe(target);
+		}
 	}
 }

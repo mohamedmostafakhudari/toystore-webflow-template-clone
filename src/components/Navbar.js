@@ -44,7 +44,7 @@ class Navbar {
 	}
 	buildNavbar() {
 		const nav = document.createElement("nav");
-		nav.className = "relative lg:relative lg:z-10 lg:w-full shadow text-base text-slate-800 bg-white";
+		nav.className = "lg:w-full shadow text-base text-slate-800 bg-white";
 		const activeClasses = "text-blue-500 underline";
 		nav.innerHTML = `
 		<div class="bg-primary text-white relative z-10 text-xs py-1">
@@ -179,15 +179,15 @@ class Navbar {
 				this.handleMenuToggling();
 			}
 		});
-		document.addEventListener("scroll", (e) => {
-			if (window.scrollY == 0) {
-				comp.classList.add("lg:relative");
-				comp.classList.remove("lg:fixed");
-			} else {
-				comp.classList.remove("lg:relative");
-				comp.classList.add("lg:fixed");
-			}
-		});
+		// document.addEventListener("scroll", (e) => {
+		// 	if (window.scrollY == 0) {
+		// 		comp.classList.add("lg:relative");
+		// 		comp.classList.remove("lg:fixed");
+		// 	} else {
+		// 		comp.classList.remove("lg:relative");
+		// 		comp.classList.add("lg:fixed");
+		// 	}
+		// });
 	}
 }
 

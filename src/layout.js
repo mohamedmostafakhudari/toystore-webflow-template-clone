@@ -22,7 +22,7 @@ export default function Layout(content) {
           </ul>
           <div id="cart-footer-container" class="mt-6"></div>
     </dialog>
-    <div id="navbar-container"></div>
+    <div id="navbar-container" class="lg:sticky lg:top-0 lg:z-10"></div>
     <div id="page-content-container">
       
     </div>

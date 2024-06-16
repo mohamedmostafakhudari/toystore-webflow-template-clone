@@ -63,9 +63,11 @@ module.exports = {
 				},
 				scaleUp: {
 					"0%": {
-						transform: "scale3d(0.5,0.5,0.5)",
+						visibility: "visible",
+						transform: "scale3d(0.7,0.7,0.7)",
 					},
 					"100%": {
+						visibility: "visible",
 						transform: "scale3d(1,1,1)",
 					},
 				},

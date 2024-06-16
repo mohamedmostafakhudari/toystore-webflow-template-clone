@@ -1,0 +1,31 @@
+<div class="container text-slate-800">
+	<div class="relative">
+		{{#if heading}}
+			<h3 class="capitalize text-2xl pb-7 lg:pb-8 border-b-2 font-medium border-slate-300 lg:text-3xl">{{heading}}</h3>
+		{{else}}
+			<h3 class="capitalize text-2xl pb-7 lg:pb-8 border-b-2 font-medium border-slate-300 lg:text-3xl">all toys</h3>
+		{{/if}}
+		<div class="bg-primary h-0.5 absolute top-full -translate-y-1/4 w-36"></div>
+	</div>
+	<div>
+		{{#if home}}
+			<a href="#" class="flex items-center gap-2 capitalize text-sm font-semibold border-b-2 border-slate-300 leading-6 absolute top-0 right-0">
+				See All Toys
+				<img src="assets/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg" class="w-3 block" alt="" />
+			</a>
+		{{else}}
+			<ul>
+				<li>
+					<a href="/catalog">all toys</a>
+				</li>
+				<li>
+					<a href="/catalog/wooden-toys">wooden toys</a>
+				</li>
+				<li>
+					<a href="/catalog/stuffed-animals">stuffed toys</a>
+				</li>
+			</ul>
+		{{/if}}
+	</div>
+	<div class="cards__container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4 md:gap-10 lg:gap-6 mt-12 mb-32 md:mt-16"></div>
+</div>

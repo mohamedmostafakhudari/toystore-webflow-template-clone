@@ -53,3 +53,13 @@ export function disableLink(linkElem) {
 		e.stopPropagation();
 	};
 }
+export function toVariableName(string) {
+	return string.split(" ").reduce((varName, part, i) => {
+		if (i === 0) {
+			varName += part.charAt(0).toLowerCase() + part.slice(1);
+		} else {
+			varName += part.charAt(0).toUpperCase() + part.slice(1);
+		}
+		return varName;
+	}, "");
+}

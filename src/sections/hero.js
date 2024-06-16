@@ -1,5 +1,5 @@
 import { createElement, appendChildren, createButton } from "../utils";
-import backgroundUrl from "../assets/5baddd4835e113c6299a48f5_li-tzuni-507346-unsplash.jpg";
+// import backgroundUrl from "../assets/5baddd4835e113c6299a48f5_li-tzuni-507346-unsplash.jpg";
 
 class HeroSection {
 	constructor() {}
@@ -12,7 +12,7 @@ class HeroSection {
 		const section = createElement("section", `min-h-[60vh] h-[60vh] md:min-h-[71.5vh] md:h-[71.5vh] lg:min-h-[80vh] lg:h-[80vh] bg-cover bg-center bg-no-repeat`, {
 			id: "hero",
 		});
-		section.style.backgroundImage = `url(${backgroundUrl})`;
+		section.style.backgroundImage = `url(assets/5baddd4835e113c6299a48f5_li-tzuni-507346-unsplash.jpg)`;
 		const container = createElement("div", "container h-full grid place-items-center");
 		const box = createElement("div", "hero__box rounded-[14px] p-12 py-10 lg:py-14 bg-white text-center space-y-4 max-w-[480px] scale-[50%] opacity-0 lg:max-w-[570px]", {
 			style: "animation-delay:1s;",
