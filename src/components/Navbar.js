@@ -44,10 +44,10 @@ class Navbar {
 	}
 	buildNavbar() {
 		const nav = document.createElement("nav");
-		nav.className = "lg:w-full shadow text-base text-slate-800 bg-white";
+		nav.className = "lg:w-full shadow-lg shadow-slate-600/10 relative text-base text-slate-800 bg-white";
 		const activeClasses = "text-blue-500 underline";
 		nav.innerHTML = `
-		<div class="bg-primary text-white relative z-10 text-xs py-1">
+		<div class="bg-primary text-white relative z-20 text-xs py-0.5">
 			<div class="container flex items-center justify-between">
 				<div>
 					Call Us: +1 2013 974-5898
@@ -55,7 +55,7 @@ class Navbar {
 				<div class="socials-container flex items-center justify-start"></div>
 			</div>
 		</div>
-		<div class="container pr-0 bg-white relative z-10 lg:px-10">
+		<div class="container pr-0 bg-white relative z-20 lg:px-10">
 			<div class="flex justify-start gap-16">
 				<div id="logo" class="text-lg text-slate-800 lg:text-xl">
 					<a href="/" class="block py-5">ToyStore</a>
@@ -105,7 +105,7 @@ class Navbar {
 			</div>
 		</div>
 		<!-- mobile -->
-		<div id="menu-container" class="lg:hidden absolute left-0 -translate-y-full top-[calc(100%+1px)] w-full translate-y- overflow-hidden data-[close]:animate-menuSlideUp data-[open]:animate-menuSlideDown"></div>
+		<div id="menu-container" class="lg:hidden absolute left-0 z-10 -translate-y-full top-[calc(100%+1px)] w-full overflow-hidden data-[close]:animate-menuSlideUp data-[open]:animate-menuSlideDown"></div>
 		`;
 		const socialsContainer = nav.querySelector(".socials-container");
 		socials.renderSocials(socialsContainer);
@@ -134,6 +134,19 @@ class Navbar {
 		return ul;
 	}
 	handleNavItemClick(id) {
+		this.selectNavItem(id);
+	}
+	handleMenuToggling() {
+		const menuContainer = document.querySelector("#menu-container");
+		if (menuContainer.hasAttribute("data-open")) {
+			menuContainer.removeAttribute("data-open");
+			menuContainer.setAttribute("data-close", "");
+		} else {
+			menuContainer.removeAttribute("data-close");
+			menuContainer.setAttribute("data-open", "");
+		}
+	}
+	selectNavItem(id) {
 		const newNavItems = this.navItems.map((item) => {
 			if (item.id === id) {
 				return {
@@ -150,15 +163,11 @@ class Navbar {
 		this.navItems = newNavItems;
 		this.render();
 	}
-	handleMenuToggling() {
-		const menuContainer = document.querySelector("#menu-container");
-		if (menuContainer.hasAttribute("data-open")) {
-			menuContainer.removeAttribute("data-open");
-			menuContainer.setAttribute("data-close", "");
-		} else {
-			menuContainer.removeAttribute("data-close");
-			menuContainer.setAttribute("data-open", "");
+	clearSelection() {
+		for (const item of this.navItems) {
+			item.selected = false;
 		}
+		this.render();
 	}
 	bindEvents(comp) {
 		const navItems = comp.querySelectorAll("nav li");
@@ -168,6 +177,10 @@ class Navbar {
 				if (!target) return;
 				const id = +target.dataset.id;
 				this.handleNavItemClick(id);
+			});
+			const logo = comp.querySelector("#logo");
+			logo.addEventListener("click", () => {
+				this.clearSelection();
 			});
 		});
 
@@ -179,15 +192,6 @@ class Navbar {
 				this.handleMenuToggling();
 			}
 		});
-		// document.addEventListener("scroll", (e) => {
-		// 	if (window.scrollY == 0) {
-		// 		comp.classList.add("lg:relative");
-		// 		comp.classList.remove("lg:fixed");
-		// 	} else {
-		// 		comp.classList.remove("lg:relative");
-		// 		comp.classList.add("lg:fixed");
-		// 	}
-		// });
 	}
 }
 

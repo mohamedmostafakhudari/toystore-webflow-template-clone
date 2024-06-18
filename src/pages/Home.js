@@ -9,11 +9,10 @@ export default class Home {
 		heroSection.render(container);
 		shopWindowsSection.render(container);
 
-		const stuffedAnimalsSection = new ToysSection("Stuffed Animals");
-		const woodenToysSection = new ToysSection("Wooden Toys");
+		const stuffedAnimalsSection = new ToysSection("Stuffed Animals", true);
+		const woodenToysSection = new ToysSection("Wooden Toys", true);
 		await stuffedAnimalsSection.render(container, 4);
 		await woodenToysSection.render(container, 4);
-		// toysSection.render(container);
 		videoSection.render(container);
 		aboutSection.render(container);
 

@@ -27,7 +27,7 @@ class InstagramSection {
 				href: "#",
 			});
 			const imageElem = createElement("img", "", {
-				src: `./assets/${image}`,
+				src: `/assets/${image}`,
 			});
 			imageWrapper.appendChild(imageElem);
 			imagesContainer.appendChild(imageWrapper);

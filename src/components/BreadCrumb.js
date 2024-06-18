@@ -1,17 +1,18 @@
 import { appendChildren, createElement, disableLink } from "../utils";
+import navbar from "./Navbar";
 
 class BreadCrumb {
 	constructor() {}
 	render(container) {
-		const pathSegments = isProduction ? window.location.pathname.split("/").slice(2) : window.location.pathname.split("/").slice(1);
 		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
+		const pathSegments = isProduction ? window.location.pathname.split("/").slice(2) : window.location.pathname.split("/").slice(1);
 		const currentRoute = pathSegments[pathSegments.length - 1];
 
 		const breadcrumbElem = this.build(pathSegments, currentRoute);
 		container.appendChild(breadcrumbElem);
 	}
 	build(pathSegments, currentRoute) {
-		const div = createElement("div", "container mt-12 flex gap-2 items-center text-zinc-400 border-zinc-300 border rounded-full w-auto ml-4 mr-4 py-2 px-6 lg:py-3", {
+		const div = createElement("div", "container mt-5 mb-20 lg:mt-12 lg:mb-24 flex gap-2 items-center text-zinc-400 border-zinc-300 border rounded-full w-auto ml-4 mr-4 py-2 px-6 lg:py-3", {
 			id: "breadcrumbs",
 		});
 
@@ -34,7 +35,6 @@ class BreadCrumb {
 				},
 				segment
 			);
-
 			if (segment === currentRoute) {
 				a.classList.add("cursor-text");
 				disableLink(a);
@@ -46,6 +46,7 @@ class BreadCrumb {
 				div.appendChild(icon);
 			}
 		}
+		this.bindEvents(div);
 		return div;
 	}
 	buildArrowIcon() {
@@ -60,6 +61,13 @@ class BreadCrumb {
       </g>
   </svg>`;
 		return icon;
+	}
+	bindEvents(comp) {
+		comp.addEventListener("click", (e) => {
+			if (e.target.matches("a[href='/']")) {
+				navbar.clearSelection();
+			}
+		});
 	}
 }
 

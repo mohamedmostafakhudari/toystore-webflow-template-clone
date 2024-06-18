@@ -8,11 +8,13 @@ import Catalog from "./pages/Catalog";
 
 export const router = {
 	routes: [
-		{ path: "/", view: Home },
-		{ path: "/about", view: About },
-		{ path: "/catalog", view: Catalog },
-		{ path: "/delivery", view: Delivery },
-		{ path: "/contacts", view: Contacts },
+		{ path: /^\/?$/, view: Home },
+		{ path: /about\/?$/, view: About },
+		{ path: /catalog\/?$/, view: Catalog },
+		{ path: /catalog\/wooden-toys\/?$/, view: Catalog },
+		{ path: /catalog\/stuffed-animals\/?$/, view: Catalog },
+		{ path: /delivery\/?$/, view: Delivery },
+		{ path: /contacts\/?$/, view: Contacts },
 	],
 	init() {
 		window.addEventListener("DOMContentLoaded", this.navigate.bind(this));
@@ -39,9 +41,8 @@ export const router = {
 
 	loadRoute(path) {
 		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
-		const processedPath = isProduction ? path.split("/")[2] : path.split("/")[1];
-
-		const route = this.routes.find((route) => route.path === "/" + processedPath);
+		const processedPath = isProduction ? path.split("/").slice(2).join("/") : path.split("/").slice(1).join("/");
+		const route = this.routes.find((route) => processedPath.match(route.path));
 
 		if (route) {
 			const view = new route.view();
