@@ -12,7 +12,7 @@ class ToysSection {
 		if (this.category) {
 			this.heading = this.category.split("-").join(" ");
 		}
-		const section = createElement("section", "", {
+		const section = createElement("section", "mt-16 mb-20 md:mt-20 md:mb-28 lg:mt-28 lg:mb-32", {
 			id: this.heading ? toVariableName(this.heading) : "toys",
 			["data-visited"]: false,
 		});

@@ -12,13 +12,13 @@ class BreadCrumb {
 		container.appendChild(breadcrumbElem);
 	}
 	build(pathSegments, currentRoute) {
-		const div = createElement("div", "container mt-5 mb-20 lg:mt-12 lg:mb-24 flex gap-2 items-center text-zinc-400 border-zinc-300 border rounded-full w-auto ml-4 mr-4 py-2 px-6 lg:py-3", {
+		const div = createElement("div", "container mt-12 flex gap-2 items-center text-zinc-400 border-zinc-300 border rounded-full w-auto py-1.5 md:py-2 md:px-8 lg:py-3", {
 			id: "breadcrumbs",
 		});
 
 		const homeLink = createElement(
 			"a",
-			"capitalize text-xs md:text-sm",
+			"capitalize text-[10px] md:text-sm",
 			{
 				href: "/",
 			},
@@ -29,7 +29,7 @@ class BreadCrumb {
 		for (const segment of pathSegments) {
 			const a = createElement(
 				"a",
-				"capitalize text-xs md:text-sm",
+				"capitalize text-[10px] md:text-sm",
 				{
 					href: "/" + segment,
 				},

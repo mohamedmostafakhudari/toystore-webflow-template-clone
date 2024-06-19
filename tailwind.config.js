@@ -12,8 +12,9 @@ module.exports = {
 			center: true,
 			screens: {
 				...defaultTheme.screens,
-				sm: "100%",
-				md: "100%",
+				sm: "330px",
+				md: "720px",
+				lg: "920px",
 			},
 		},
 		extend: {

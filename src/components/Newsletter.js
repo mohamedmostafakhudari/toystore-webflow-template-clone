@@ -3,7 +3,7 @@ import { appendChildren, createButton, createElement } from "../utils";
 class NewsLetter {
 	constructor() {}
 	render(container) {
-		const wrapper = createElement("div", "container");
+		const wrapper = createElement("div", "container px-0");
 		const newsLetterElem = this.build();
 		wrapper.appendChild(newsLetterElem);
 		container.appendChild(wrapper);
@@ -26,7 +26,7 @@ class NewsLetter {
 
 		const p = createElement(
 			"p",
-			"text-lg font-varela text-slate-800 text-center md:text-2xl lg:font-bold lg:text-start",
+			"text-lg font-varela text-slate-800 text-center md:text-2xl lg:text-start",
 			{},
 			"",
 			"Subscribe to our newsletter & get <span class='text-primary'>10% discount!</span>"
@@ -35,7 +35,7 @@ class NewsLetter {
 
 		const wrapper_2 = createElement("div", "flex flex-col lg:flex-row gap-4");
 
-		const input = createElement("input", "border-2 border-slate-200 bg-slate-50 rounded-full py-3 text-center placeholder:text-zinc-400 placeholder:font-bold lg:flex-1 lg:text-left lg:pl-8", {
+		const input = createElement("input", "border-2 border-slate-200 bg-slate-50 rounded-full py-3 text-center placeholder:text-zinc-400 lg:flex-1 lg:text-left lg:pl-8", {
 			type: "email",
 			id: "email",
 			name: "email",
