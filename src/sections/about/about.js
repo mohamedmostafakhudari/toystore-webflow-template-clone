@@ -5,7 +5,6 @@ import { data } from "./data";
 class AboutSection {
 	constructor() {}
 	render(container) {
-		// py-16 md:py-24 lg:py-28
 		const section = createElement("section", "mt-16", {
 			id: "about",
 		});
@@ -13,21 +12,6 @@ class AboutSection {
 		const temp = compiledTemp({});
 		section.innerHTML = temp;
 
-		// const aboutSubSectionContainer = section.querySelector(".about-subsection-container");
-
-		// const buttons = ["get it now!"];
-		// const buttonPlaceholders = section.querySelectorAll(".button-placeholder");
-		// buttonPlaceholders.forEach((placeholder, i) => {
-		// 	const buttonElem = createButton(
-		// 		"bg-primary text-white w-fit mx-auto lg:mx-0 uppercase mt-8 hover:shadow-primary/50 hover:shadow-[0px_2px_4px_1px] hover:scale-[102%]",
-		// 		{
-		// 			href: "#",
-		// 		},
-		// 		buttons[i],
-		// 		"link"
-		// 	);
-		// 	placeholder.replaceWith(buttonElem);
-		// });
 		const aboutContentContainer = section.querySelector(".about-content-container");
 		if (isHomePage()) {
 			const { heading, text, imgSrc, buttons, links } = data.home;
