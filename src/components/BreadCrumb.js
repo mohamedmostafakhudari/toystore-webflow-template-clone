@@ -1,11 +1,10 @@
-import { appendChildren, createElement, disableLink } from "../utils";
+import { appendChildren, createElement, disableLink, isProduction } from "../utils";
 import navbar from "./Navbar";
 
 class BreadCrumb {
 	constructor() {}
 	render(container) {
-		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
-		const pathSegments = isProduction ? window.location.pathname.split("/").slice(2) : window.location.pathname.split("/").slice(1);
+		const pathSegments = isProduction() ? window.location.pathname.split("/").slice(2) : window.location.pathname.split("/").slice(1);
 		const currentRoute = pathSegments[pathSegments.length - 1];
 		const wrapper = createElement("div", "container");
 		const breadcrumbElem = this.build(pathSegments, currentRoute);

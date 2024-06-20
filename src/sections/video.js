@@ -10,7 +10,7 @@ class VideoSection {
 			"mt-20 md:mt-28 lg:mt-32 min-h-[55vh] h-[55vh] bg-[size:400%] bg-[position:50%,0] bg-fixed md:bg-[size:200%] lg:bg-[size:130%] bg-black/30 bg-blend-overlay bg-no-repeat text-white",
 			{
 				id: "video",
-				style: `background-image: url('/assets/5baf3d57ace69c149bb331b8_tim-gouw-165547-unsplash.jpg')`,
+				style: `background-image: url('assets/5baf3d57ace69c149bb331b8_tim-gouw-165547-unsplash.jpg')`,
 			}
 		);
 		const compiledTemp = Handlebars.compile(rawTemp);

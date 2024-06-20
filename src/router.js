@@ -6,6 +6,7 @@ import Contacts from "./pages/Contacts";
 import Delivery from "./pages/Delivery";
 import Catalog from "./pages/Catalog";
 
+const baseUrl = window.location.origin + window.location.pathname;
 export const router = {
 	routes: [
 		{ path: /^\/?$/, view: Home },
@@ -31,22 +32,22 @@ export const router = {
 
 	navigate() {
 		const currentPath = window.location.pathname;
-		this.loadRoute(currentPath);
+		const isProduction = window.location.hostname === "mohamedmostafakhudari.github.io";
+		const processedPath = isProduction ? currentPath.split("/").slice(2).join("/") + "/" : currentPath.split("/").slice(1).join("/") + "/";
+		this.loadRoute(processedPath);
 	},
 
 	navigateTo(path) {
-		window.history.pushState(null, null, path);
+		const url = baseUrl + path.slice(1);
+		window.history.pushState(null, null, url);
 		this.loadRoute(path);
 	},
 
 	loadRoute(path) {
-		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
-		// const processedPath = isProduction ? path.split("/").slice(2).join("/") : path.split("/").slice(1).join("/");
 		const route = this.routes.find((route) => path.match(route.path));
-
 		if (route) {
-			const view = new route.view();
-			Layout(view);
+			const Route = route.view;
+			Layout(new Route());
 		}
 	},
 };

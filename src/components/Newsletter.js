@@ -20,7 +20,7 @@ class NewsLetter {
 
 		const iconWrapper = createElement("div", "grid place-items-center bg-primary rounded-full w-16 aspect-square shrink-0");
 		const icon = createElement("img", "", {
-			src: "/assets/5baf56dcace69cfd39b34f7a_paperplane-icon-white.svg",
+			src: "assets/5baf56dcace69cfd39b34f7a_paperplane-icon-white.svg",
 		});
 		iconWrapper.appendChild(icon);
 

@@ -84,7 +84,7 @@ export function toVariableName(string) {
 }
 
 export function isProduction() {
-	return window.location.hostname === "https://mohamedmostafakhudari.github.io";
+	return window.location.hostname === "mohamedmostafakhudari.github.io";
 }
 export function isHomePage() {
 	const route = isProduction() ? window.location.pathname.split("/")[2] : window.location.pathname.split("/")[1];

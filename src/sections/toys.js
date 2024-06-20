@@ -37,7 +37,7 @@ class ToysSection {
 			all: {
 				label: "see all toys",
 				href: "/category",
-				icon: "/assets/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg",
+				icon: "assets/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg",
 			},
 		};
 		linkPlaceholders.forEach((placeholder, i) => {
@@ -54,7 +54,7 @@ class ToysSection {
 
 		container.appendChild(section);
 		try {
-			const toys = await fetchData("/assets/data.json");
+			const toys = await fetchData("assets/data.json");
 			if (toys) {
 				cardsContainer.removeChild(loadingIndicator);
 				if (this.heading) {
@@ -102,7 +102,7 @@ class ToysSection {
 		);
 
 		const imageWrapper = createElement("div", "w-60 lg:w-32");
-		const image = createResponsiveImage(`/assets/${images[0]}`, `/assets/${images[1] ?? images[0]} 500w, /assets/${images[0]} 1200w`, "100vw", name);
+		const image = createResponsiveImage(`assets/${images[0]}`, `assets/${images[1] ?? images[0]} 500w, assets/${images[0]} 1200w`, "100vw", name);
 		imageWrapper.appendChild(image);
 
 		const infoWrapper = createElement("div", "text-center space-y-3");
