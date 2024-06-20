@@ -7,7 +7,7 @@ class InstagramSection {
 	render(container) {
 		const compiledTemp = Handlebars.compile(rawTemp);
 		const temp = compiledTemp({});
-		const wrapper = createElement("div", "container py-28", {
+		const wrapper = createElement("div", "container mt-16 md:mt-24", {
 			id: "instagram",
 		});
 		wrapper.innerHTML = temp;

@@ -26,7 +26,7 @@ export default function Layout(content) {
     <div id="page-content-container">
       
     </div>
-		<div id="footer-container"></div>
+		<div id="footer-container" class="mt-16 md:mt-24"></div>
   `;
 	const pageContentContainer = document.getElementById("page-content-container");
 	content.render(pageContentContainer);

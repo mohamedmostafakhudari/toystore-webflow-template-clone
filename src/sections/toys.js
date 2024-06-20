@@ -1,4 +1,4 @@
-import { appendChildren, createElement, createResponsiveImage, fetchData, toVariableName } from "../utils";
+import { appendChildren, createElement, createLink, createResponsiveImage, fetchData, toVariableName } from "../utils";
 import rawTemp from "!raw-loader!../templates/toysSection.hbs";
 import Handlebars from "handlebars";
 
@@ -12,7 +12,7 @@ class ToysSection {
 		if (this.category) {
 			this.heading = this.category.split("-").join(" ");
 		}
-		const section = createElement("section", "mt-16 mb-20 md:mt-20 md:mb-28 lg:mt-28 lg:mb-32", {
+		const section = createElement("section", "", {
 			id: this.heading ? toVariableName(this.heading) : "toys",
 			["data-visited"]: false,
 		});
@@ -31,6 +31,26 @@ class ToysSection {
 			const optionsContainer = section.querySelector(".options__container");
 			this.selectOption({ optionsContainer, currentCategory: this.category });
 		}
+
+		const linkPlaceholders = section.querySelectorAll(".link-placeholder");
+		const links = {
+			all: {
+				label: "see all toys",
+				href: "/category",
+				icon: "/assets/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg",
+			},
+		};
+		linkPlaceholders.forEach((placeholder, i) => {
+			const link = createLink(
+				"absolute top-0 right-0",
+				{
+					href: links["all"].href,
+				},
+				links["all"].label,
+				links["all"].icon
+			);
+			placeholder.replaceWith(link);
+		});
 
 		container.appendChild(section);
 		try {

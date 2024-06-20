@@ -7,12 +7,13 @@ class BreadCrumb {
 		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
 		const pathSegments = isProduction ? window.location.pathname.split("/").slice(2) : window.location.pathname.split("/").slice(1);
 		const currentRoute = pathSegments[pathSegments.length - 1];
-
+		const wrapper = createElement("div", "container");
 		const breadcrumbElem = this.build(pathSegments, currentRoute);
-		container.appendChild(breadcrumbElem);
+		wrapper.appendChild(breadcrumbElem);
+		container.appendChild(wrapper);
 	}
 	build(pathSegments, currentRoute) {
-		const div = createElement("div", "container mt-12 flex gap-2 items-center text-zinc-400 border-zinc-300 border rounded-full w-auto py-1.5 md:py-2 md:px-8 lg:py-3", {
+		const div = createElement("div", "px-6 mt-4 md:mt-6 lg:mt-12 flex gap-2 items-center text-zinc-400 border-zinc-300 border rounded-full w-auto py-2 md:py-2 md:px-8 lg:py-3", {
 			id: "breadcrumbs",
 		});
 

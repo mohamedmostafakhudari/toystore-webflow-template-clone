@@ -31,6 +31,25 @@ export function createResponsiveImage(src, srcset, sizes, alt, className) {
 	});
 	return image;
 }
+
+export function createLink(className, attributes, textContent, iconSrc = "") {
+	const elem = createElement(
+		"a",
+		`flex items-center gap-2 capitalize text-sm font-semibold border-b-2 border-slate-300 leading-6 duration-200 hover:border-primary ${className}`,
+		attributes,
+		textContent
+	);
+	if (iconSrc) {
+		const icon = createIcon("", iconSrc);
+		elem.appendChild(icon);
+	}
+	return elem;
+}
+export function createIcon(className, src) {
+	return createElement("img", `w-3 block ${className}`, {
+		src,
+	});
+}
 export function appendChildren(parent, ...children) {
 	children.forEach((child) => {
 		parent.appendChild(child);
@@ -62,4 +81,12 @@ export function toVariableName(string) {
 		}
 		return varName;
 	}, "");
+}
+
+export function isProduction() {
+	return window.location.hostname === "https://mohamedmostafakhudari.github.io";
+}
+export function isHomePage() {
+	const route = isProduction() ? window.location.pathname.split("/")[2] : window.location.pathname.split("/")[1];
+	return route === "";
 }

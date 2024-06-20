@@ -40,7 +40,7 @@ class FooterSection {
 		const compiledTemp = Handlebars.compile(rawTemp);
 		const temp = compiledTemp({});
 
-		const footer = createElement("footer", "bg-primary text-white py-8 md:py-12");
+		const footer = createElement("footer", "bg-primary text-white mt-16 md:mt-24 py-8 md:py-12");
 		footer.innerHTML = temp;
 
 		const footerLinksContainer = footer.querySelector(".footer-links-container");

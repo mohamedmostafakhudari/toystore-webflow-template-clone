@@ -48,15 +48,16 @@ class Navbar {
 		const activeClasses = "text-blue-500 underline";
 		nav.innerHTML = `
 		<div class="bg-primary text-white relative z-20 text-xs py-0.5">
-			<div class="container px-0 flex items-center justify-between">
+			<div class="container flex items-center justify-between">
 				<div>
 					Call Us: +1 2013 974-5898
 				</div>
 				<div class="socials-container flex items-center justify-start"></div>
 			</div>
 		</div>
-		<div class="container px-0 bg-white relative z-20">
-			<div class="flex justify-start gap-16">
+		<div class="bg-white relative z-20">
+			<div class="pl-4 mx-0 w-full lg:container">
+				<div class="flex justify-start gap-16">
 				<div id="logo" class="text-lg text-slate-800 lg:text-xl">
 					<a href="/" class="block py-5">ToyStore</a>
 				</div>
@@ -102,6 +103,7 @@ class Navbar {
 						</button>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 		<!-- mobile -->

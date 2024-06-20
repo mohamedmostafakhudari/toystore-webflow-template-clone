@@ -3,7 +3,7 @@ import { appendChildren, createButton, createElement } from "../utils";
 class NewsLetter {
 	constructor() {}
 	render(container) {
-		const wrapper = createElement("div", "container px-0");
+		const wrapper = createElement("div", "container");
 		const newsLetterElem = this.build();
 		wrapper.appendChild(newsLetterElem);
 		container.appendChild(wrapper);
@@ -11,7 +11,7 @@ class NewsLetter {
 	build() {
 		const form = createElement(
 			"form",
-			"bg-white shadow shadow-black/30 p-8 py-10 w-full rounded-xl flex flex-col lg:flex-row gap-8 mx-auto max-w-[460px] md:mx-auto md:p-16 lg:items-center lg:max-w-none lg:p-12 lg:pb-16 lg:[&>*]:flex-1",
+			"bg-white shadow shadow-black/10 p-8 py-10 w-full rounded-xl flex flex-col lg:flex-row gap-8 mx-auto max-w-[460px] md:mx-auto md:p-16 lg:items-center lg:max-w-none lg:p-12 lg:pb-16 lg:[&>*]:flex-1",
 			{
 				id: "newsletter",
 			}
