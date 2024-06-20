@@ -1,7 +1,7 @@
 import { appendChildren, createButton, createElement, createLink, isHomePage } from "../../utils";
 import Handlebars from "handlebars";
 import rawTemp from "!raw-loader!../../templates/aboutSection.hbs";
-import { data } from "./data";
+import { data } from "./data.js";
 class AboutSection {
 	constructor() {}
 	render(container) {
@@ -19,14 +19,13 @@ class AboutSection {
 			aboutContentContainer.appendChild(subsection);
 		} else {
 			for (const [index, { heading, text, imgSrc, buttons, links }] of data.about.entries()) {
-				const subsection = this.buildSubSection(index, { heading, text, imgSrc, buttons, links });
+				const subsection = this.buildSubSection({ heading, text, imgSrc, buttons, links }, index);
 
 				aboutContentContainer.appendChild(subsection);
 			}
 		}
-		container.appendChild(section);
 	}
-	buildSubSection(index, { heading, text, imgSrc, buttons = [], links = [] }) {
+	buildSubSection({ heading, text, imgSrc, buttons = [], links = [] }, index = 0) {
 		const div = createElement("div", `flex flex-col ${index % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-28 lg:items-center lg:[&>*]:flex-1`);
 
 		const imageWrapper = createElement("div", "about__image rounded-xl overflow-hidden scale-[50%] opacity-0 lg:grid lg:place-items-center");

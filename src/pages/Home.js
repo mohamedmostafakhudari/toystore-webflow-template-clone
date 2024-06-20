@@ -43,7 +43,7 @@ export default class Home {
 			...container.querySelectorAll("#shopWindows .shopwindows__box"),
 			...container.querySelectorAll("#stuffedAnimals .card, #woodenToys .card"),
 			container.querySelector("#video .video__text"),
-			container.querySelector("#about .about__image"),
+			...container.querySelectorAll("#about .about__image"),
 		];
 		console.log(targets);
 		for (const target of targets) {

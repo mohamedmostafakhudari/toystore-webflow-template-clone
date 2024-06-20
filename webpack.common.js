@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
 		output: {
 			filename: "main.bundle.js",
 			path: path.resolve(__dirname, "dist"),
-			publicPath: process.env.BASE_URL || "/",
+			publicPath: isProduction ? process.env.BASE_URL : "/",
 			clean: true,
 		},
 		resolve: {

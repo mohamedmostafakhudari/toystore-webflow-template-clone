@@ -41,8 +41,8 @@ export const router = {
 
 	loadRoute(path) {
 		const isProduction = window.location.hostname === "https://mohamedmostafakhudari.github.io";
-		const processedPath = isProduction ? path.split("/").slice(2).join("/") : path.split("/").slice(1).join("/");
-		const route = this.routes.find((route) => processedPath.match(route.path));
+		// const processedPath = isProduction ? path.split("/").slice(2).join("/") : path.split("/").slice(1).join("/");
+		const route = this.routes.find((route) => path.match(route.path));
 
 		if (route) {
 			const view = new route.view();
